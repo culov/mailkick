@@ -6,17 +6,13 @@ module Mailkick
       Mailkick.discover_services unless Mailkick.services.any?
 
       Mailkick.secret_token ||= begin
-        creds =
-          if app.respond_to?(:credentials) && app.credentials.secret_key_base
-            app.credentials
-          # elsif app.respond_to?(:secrets)
-          #   app.secrets
-          else
-            app.config
-          end
-          # 
-        creds.respond_to?(:secret_key_base) ? creds.secret_key_base : creds.secret_token
-        "asddasdsa'"
+        # Use credentials if available
+        if app.respond_to?(:credentials) && app.credentials.secret_key_base
+          app.credentials.secret_key_base
+        # Fallback to Rails.application.secret_key_base
+        else
+          Rails.application.secret_key_base
+        end
       end
     end
   end
