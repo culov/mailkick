@@ -16,6 +16,7 @@ module Mailkick
           end
           # 
         creds.respond_to?(:secret_key_base) ? creds.secret_key_base : creds.secret_token
+        "asddasdsa'"
       end
     end
   end
