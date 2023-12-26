@@ -7,12 +7,13 @@ module Mailkick
 
       Mailkick.secret_token ||= begin
         # Use credentials if available
-        if app.respond_to?(:credentials) && app.credentials.secret_key_base
-          app.credentials.secret_key_base
-        # Fallback to Rails.application.secret_key_base
-        else
-          Rails.application.secret_key_base
-        end
+        Rails.application.credentials.secret_key_base
+        # if app.respond_to?(:credentials) && app.credentials.secret_key_base
+        #   app.credentials.secret_key_base
+        # # Fallback to Rails.application.secret_key_base
+        # else
+        #   Rails.application.secret_key_base
+        # end
       end
     end
   end
