@@ -14,7 +14,7 @@ module Mailkick
           else
             app.config
           end
-
+          # 
         creds.respond_to?(:secret_key_base) ? creds.secret_key_base : creds.secret_token
       end
     end
